@@ -25,7 +25,7 @@ export default function Login() {
       console.log(res.data);
       alert(res.data.message);
       localStorage.setItem("token", res.data.token);
-      router.push("/[main]/dashboard");
+      router.push("/main/dashboard");
     } catch (error) {
       console.log(error);
       alert(error.response?.data?.message || "Something went wrong");

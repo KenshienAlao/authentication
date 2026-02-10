@@ -11,7 +11,6 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 // check
-
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,

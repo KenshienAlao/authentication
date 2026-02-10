@@ -1,7 +1,6 @@
 "use client";
 
 import axios from "axios";
-import { Eye, EyeClosed } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -14,11 +13,13 @@ export default function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    // check if password matches
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
     try {
+      // data stored in database
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/signup`,
         {

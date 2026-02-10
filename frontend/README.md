@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔐 JWT Authentication System
 
-## Getting Started
+A simple authentication system built with **Next.js**, **Node.js**, **Express**, and **MySQL**. This project demonstrates a full-stack implementation of JSON Web Token (JWT) authentication.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+
+- **User Registration**: Secure signup with password hashing using `bcrypt`.
+- **JWT Authentication**: Secure login issuing a JSON Web Token for stateless authentication.
+- **Protected Routes**: Dashboard and user info routes that require a valid JWT.
+- **Database Persistence**: User data stored securely in a **MySQL** database.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+
+### Backend
+
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+
+---
+
+## 📦 Getting Started
+
+### 1. Prerequisites
+
+- Node.js installed
+- MySQL server running
+
+### 2. Configuration
+
+Create a `.env` file in the `backend` directory:
+
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=auth_db
+JWT_SECRET=your_super_secret_key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Backend:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd backend
+npm install
+npm run dev
+```
 
-## Learn More
+**Frontend:**
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔑 Key Concepts
 
-## Deploy on Vercel
+### JSON Web Token (JWT)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The system follows a standard JWT flow:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. User logs in with credentials.
+2. Server verifies credentials and signs a JWT containing the user ID.
+3. Client stores the JWT in `localStorage`.
+4. Client sends the JWT in the `Authorization` header for protected requests.
+
+### SQL Database (MySQL)
+
+The project uses a structured SQL table for users:
+
+```sql
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+## 📄 License
+
+This project is just simple authentication system and free to use.
