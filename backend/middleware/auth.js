@@ -10,7 +10,12 @@ const authMiddleware = (req, res, next) => {
   }
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { id: decodedToken.id, email: decodedToken.email };
+    req.user = {
+      id: decodedToken.id,
+      email: decodedToken.email,
+      username: decodedToken.username,
+      password: decodedToken.password,
+    };
     next();
   } catch (error) {
     return res.status(401).json({
