@@ -58,7 +58,7 @@ JWT_SECRET=your_super_secret_key
 ```bash
 cd backend
 npm install
-npm run dev
+nodemon or node index
 ```
 
 **Frontend:**
