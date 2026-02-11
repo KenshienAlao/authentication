@@ -11,8 +11,6 @@ const authMiddleware = (req, res, next) => {
   }
   // verify the token
   try {
-    // remove the Bearer from the token
-    const token = req.headers.authorization.replace("Bearer ", "");
     // verify the token and get the user id
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     req.user = {

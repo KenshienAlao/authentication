@@ -6,6 +6,7 @@ export default function Error() {
   const router = useRouter();
 
   const login = () => {
+    localStorage.removeItem("token");
     router.push("/login");
   };
 

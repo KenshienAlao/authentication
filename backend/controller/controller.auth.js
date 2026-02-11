@@ -37,11 +37,11 @@ exports.signup = async (req, res) => {
         success: false,
         message: "Username already exists",
       });
-      
+
     // hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
     // insert the user
-    const [result] = await db.query(
+    const result = await db.query(
       "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
       [username, email, hashedPassword],
     );
@@ -116,9 +116,7 @@ exports.userInfo = async (req, res) => {
   try {
     // get user info
     const [user] = await db.query(
-      "SELECT id, username, email FROM users WHERE id = ?",
-      [req.user.id],
-    );
+      "SELECT id, username, email FROM users WHERE id = ?", [req.user.id]);
 
     // if user not found
     if (user.length === 0) {
