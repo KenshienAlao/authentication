@@ -12,13 +12,12 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // checking token
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/error");
-    }
-
     const fetch = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        router.push("/error");
+      }
+
       try {
         const res = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/api/auth/dashboard`,
@@ -77,7 +76,7 @@ export default function Dashboard() {
                 className="bg-blue-600 p-2 rounded-lg text-white text-center w-full"
               >
                 {" "}
-                {emailShow ? "hide email" : "show email"} 
+                {emailShow ? "hide email" : "show email"}
               </button>
             </div>
           </div>
